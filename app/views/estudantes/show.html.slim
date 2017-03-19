@@ -1,0 +1,22 @@
+- model_class = Estudante
+.page-header
+  h1=t '.title', :default => model_class.model_name.human.titleize
+
+p
+  strong= model_class.human_attribute_name(:nome) + ':'
+  br
+  = @estudante.nome
+p
+  strong= model_class.human_attribute_name(:número_de_registro) + ':'
+  br
+  = @estudante.numero_de_registro
+p
+  strong= model_class.human_attribute_name(:status) + ':'
+  br
+  = @estudante.estudante_status_humanize
+
+= link_to t('.back', :default => t("helpers.links.back")), estudantes_path, :class => 'btn btn-default'
+'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_estudante_path(@estudante), :class => 'btn btn-default'
+'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), estudante_path(@estudante), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

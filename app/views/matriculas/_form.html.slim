@@ -1,0 +1,16 @@
+= form_for @matricula, html: { class: "form form-horizontal matricula" } do |f|
+  .form-group
+    = f.label :estudante_id, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.select :estudante_id, @estudantes.collect {|estudante| [(estudante.nome), estudante.id]}, {}, class: 'form-control'
+    = f.error_span(:estudante_id)
+  .form-group
+    = f.label :curso_id, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = f.select :curso_id, @cursos.collect {|curso| [(curso.nome), curso.id]}, {}, class: 'form-control'
+    = f.error_span(:curso_id)
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = f.submit t('.submit', :default => t("helpers.links.submit")), :class => 'btn btn-primary'
+      '
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), matriculas_path, :class => 'btn'
